@@ -7,14 +7,13 @@ import java.sql.Statement;
 
 
 public class DatabaseConnection {
-    //MODIFIEZ LE MOT DE PASSE SI NÉCESSAIRE
     private static final String URL = "jdbc:mysql://localhost:3306/";
     private static final String DB_NAME = "gestion_etudiants";
     private static final String USER = "root";
-    private static final String PASSWORD = "";  // Mettez votre mot de passe MySQL ici
+    private static final String PASSWORD = "";
     
     public static boolean testerConnexion() {
-        System.out.println("=== TEST DE CONNEXION MYSQL ===");
+        System.out.println("TEST DE CONNEXION À LA BASE DE DONNÉES");
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -29,34 +28,34 @@ public class DatabaseConnection {
             return true;
             
         } catch (ClassNotFoundException e) {
-            System.err.println("✗ Driver MySQL non trouvé !");
+            System.err.println("Driver MySQL non trouvé !");
             return false;
         } catch (SQLException e) {
-            System.err.println("✗ Erreur de connexion !");
+            System.err.println("Erreur de connexion !");
             System.err.println("  Détails: " + e.getMessage());
             return false;
         }
     }
     
     public static boolean creerBaseDeDonnees() {
-        System.out.println("\n=== CRÉATION DE LA BASE DE DONNÉES ===");
+        System.out.println("\n CRÉATION DE LA BASE DE DONNÉES ");
         
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              Statement stmt = conn.createStatement()) {
             
             stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS " + DB_NAME);
-            System.out.println("✓ Base de données '" + DB_NAME + "' créée");
+            System.out.println("Base de données '" + DB_NAME + "' créée");
             return true;
             
         } catch (SQLException e) {
-            System.err.println("✗ Erreur: " + e.getMessage());
+            System.err.println("Erreur: " + e.getMessage());
             return false;
         }
 }
 
 
 public static boolean creerTable() {
-    System.out.println("\n=== CRÉATION DE LA TABLE ===");
+    System.out.println("\n CRÉATION DE LA TABLE ");
     
     try (Connection conn = DriverManager.getConnection(URL + DB_NAME, USER, PASSWORD);
          Statement stmt = conn.createStatement()) {
@@ -67,11 +66,11 @@ public static boolean creerTable() {
                     "classe VARCHAR(50) NOT NULL)";
         
         stmt.executeUpdate(sql);
-        System.out.println("✓ Table 'etudiants' créée");
+        System.out.println("Table 'etudiants' créée");
         return true;
         
     } catch (SQLException e) {
-        System.err.println("✗ Erreur: " + e.getMessage());
+        System.err.println("Erreur: " + e.getMessage());
         return false;
     }
 }
