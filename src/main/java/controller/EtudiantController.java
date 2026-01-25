@@ -9,15 +9,15 @@ public class EtudiantController {
     private EtudiantService service = new EtudiantService();
 
     public void ajouter(String matricule, String nom, String prenom, String classe) {
-        service.ajouter(new Etudiant(matricule, nom, prenom, classe));
+        service.ajouter(new Etudiant(matricule, nom, classe));
     }
 
     public void supprimer(Etudiant etudiant) throws Exception {
         service.supprimer(etudiant);
     }
 
-    public void modifier(Etudiant etudiant, String matricule, String nom, String prenom, String classe) {
-        service.modifier(etudiant, matricule, nom, prenom, classe);
+    public void modifier(Etudiant etudiant, String matricule, String nom, String classe) {
+        service.modifier(etudiant, matricule, nom, classe);
     }
 
     public List<Etudiant> getTous() {

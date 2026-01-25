@@ -3,13 +3,11 @@ package main.java.model;
 public class Etudiant {
     private String matricule;
     private String nom;
-    private String prenom;
     private String classe;
 
-    public Etudiant(String matricule, String nom, String prenom, String classe) {
+    public Etudiant(String matricule, String nom, String classe) {
         this.matricule = matricule;
         this.nom = nom;
-        this.prenom = prenom;
         this.classe = classe;
     }
 
@@ -19,10 +17,6 @@ public class Etudiant {
 
     public String getNom() {
         return nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
     }
 
     public String getClasse() {
@@ -35,10 +29,6 @@ public class Etudiant {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
     }
 
     public void setClasse(String classe) {

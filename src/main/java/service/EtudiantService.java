@@ -18,10 +18,9 @@ public class EtudiantService {
         }
     }
 
-    public void modifier(Etudiant etudiant, String matricule, String nom, String prenom, String classe) {
+    public void modifier(Etudiant etudiant, String matricule, String nom, String classe) {
         etudiant.setMatricule(matricule);
         etudiant.setNom(nom);
-        etudiant.setPrenom(prenom);
         etudiant.setClasse(classe);
     }
 
